@@ -18,6 +18,16 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+// import React, { useContext } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+  Routes,
+} from "react-router-dom";
+import HealthDashboard from './HealthDashboard';
+import CountDashboard from './CountDashboard';
 
 const drawerWidth = 240;
 
@@ -65,6 +75,20 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
 }));
+
+<React.Fragment>
+<Routes>
+  <Route path="/counts" exact>
+    <CountDashboard/>
+  </Route>
+  <Route path="/health" exact>
+<HealthDashboard/>
+  </Route>
+
+  {/* <Redirect to="/login" /> */}
+  </Routes>
+</React.Fragment>
+
 
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
