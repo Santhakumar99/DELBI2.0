@@ -19,6 +19,11 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import axios from 'axios'
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+// import MailIcon from '@mui/icons-material/DeleteIcon';
+import Button from '@mui/material/Button';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 // import React, { useContext } from "react";
 import {
@@ -187,7 +192,11 @@ export default function PersistentDrawerLeft() {
         // handleClickOpen("Something went wrong !!!");
       }
     }
-  
+  const getRowData =(data)=>{
+
+    console.log("row data", data)
+
+  };
   const handleDrawerClose = () => {
     setOpen(false);
   };
@@ -207,7 +216,42 @@ export default function PersistentDrawerLeft() {
       headerName: 'Mobile',
       type: 'mobile',
       width: 190,
-    }];
+    },
+    {
+      field: "action",
+      headerName: "Edit",
+      width: 100,
+      disableClickEventBubbling: true,
+      renderCell: (params) => (
+        <IconButton
+          onClick={(event) => {
+            getRowData(params.row.id)
+            // event.ignore = true;
+            // console.log("id",params.row.id);
+          }}
+        >
+          <EditIcon />
+        </IconButton>
+      )
+    },
+    {
+      field: "action 1",
+      headerName: "Delete",
+      width: 100,
+      disableClickEventBubbling: true,
+      renderCell: (params) => (
+        <IconButton
+          onClick={(event) => {
+            getRowData(params.row.id)
+            // event.ignore = true;
+            // console.log("id",params.row.id);
+          }}
+        >
+          <DeleteIcon />
+        </IconButton>
+      )
+    }
+  ];
 
 
 
@@ -307,6 +351,12 @@ export default function PersistentDrawerLeft() {
     </Box> */}
 
     <div style={{ height: 400, width: '100%' }}>
+      <div className='addbuttonRow' style={{alignItems:"end",margin:"20px"}}>
+
+    <Button variant="outlined" startIcon={<PersonAddIcon />}>
+  Add User
+</Button>
+      </div>
       <DataGrid
         rows={data}
         columns={columns}
