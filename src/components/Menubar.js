@@ -41,6 +41,11 @@ import {DataGrid,GridValueGetterParams,GridColDef} from '@mui/x-data-grid';
 import { useState } from 'react';
 // import  from '@mui/x-data-grid';
 // import  from '@mui/x-data-grid';
+
+import {useNavigate} from 'react-router-dom';
+
+// export default function App() {
+ 
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -147,13 +152,13 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 
 export default function PersistentDrawerLeft() {
+  // const navigate = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [data, setData] = useState([]);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
-
   React.useEffect(() => {
     fetchData();
     // var LoggedUser;
@@ -200,7 +205,9 @@ export default function PersistentDrawerLeft() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+  const navigateToUsers = () => {
+    // navigate('/users', {replace: true});
+  };
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 70 },
     { field: 'name', headerName: 'Name', width: 130 },
@@ -353,7 +360,7 @@ export default function PersistentDrawerLeft() {
     <div style={{ height: 400, width: '100%' }}>
       <div className='addbuttonRow' style={{alignItems:"end",margin:"20px"}}>
 
-    <Button variant="outlined" startIcon={<PersonAddIcon />}>
+    <Button variant="outlined" startIcon={<PersonAddIcon />} onClick={navigateToUsers()}> 
   Add User
 </Button>
       </div>
