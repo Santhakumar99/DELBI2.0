@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import HealthDashboard from './components/HealthDashboard';
 import UsersList from './components/Users/UsersList';
+import Adduser from './components/Users/AddUser';
 function App() {
   return (
     <div className="App">
@@ -23,6 +24,11 @@ function App() {
                         exact
                         path="/ViewUsers"
                         element={<UsersList />}
+                    />
+                               <Route
+                        exact
+                        path="/Adduser"
+                        element={<Adduser />}
                     />
                 </Routes>
             </BrowserRouter>

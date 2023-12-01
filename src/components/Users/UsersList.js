@@ -5,11 +5,42 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
-
+import axios from 'react';
+import { useState,useDeferredValue } from 'react';
 
 const UsersList = () => {
 
-    const columns: GridColDef[] = [
+  const [data, setData] = useState([]);
+  React.useEffect(() => {
+    fetchData();
+    // var LoggedUser;
+  }, []);
+  const fetchData = async () => {
+
+    // if (token) {
+      try {
+        // setIsLoading(true);
+        const result = await axios.get("http://localhost:7400/users/AllUsers")
+          .catch((error) => {
+            console.log("error ", error.response.data.errors[0].msg);         
+          });
+            console.log(result,"users")
+       
+        if (result.data) {
+          let array = result.data;
+          for (let i = 0; i < array.length; i++) {
+            const element = array[i];
+            element.id = i + 1;
+          }
+          setData(array);
+          console.log(array,"data")
+          // setIsLoading(false);
+        }
+      } catch (err) {
+
+      }
+    }
+    const columns = [
         { field: 'id', headerName: 'ID', width: 70 },
         { field: 'name', headerName: 'Name', width: 130 },
         { field: 'age', headerName: 'Age', width: 130 },

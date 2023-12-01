@@ -5,7 +5,7 @@ const AddUser = () => {
 
       
   return (
-    <div>
+    <div className='container'>
         <form>
   <div class="mb-3">
     <label for="name" class="form-label">Name</label>

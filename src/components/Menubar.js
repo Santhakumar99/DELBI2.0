@@ -152,7 +152,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 
 export default function PersistentDrawerLeft() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [data, setData] = useState([]);
@@ -360,7 +360,7 @@ export default function PersistentDrawerLeft() {
     <div style={{ height: 400, width: '100%' }}>
       <div className='addbuttonRow' style={{alignItems:"end",margin:"20px"}}>
 
-    <Button variant="outlined" startIcon={<PersonAddIcon />} onClick={navigateToUsers()}> 
+    <Button variant="outlined" startIcon={<PersonAddIcon />} onClick={()=>navigate('/Adduser')}> 
   Add User
 </Button>
       </div>
